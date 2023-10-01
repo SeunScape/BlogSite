@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1> Categories page</h1>
+<div>
+<% if(categories != '') { %>
+  <% categories.forEach(function(category, index) {%>
+<a href="/categories">
+<div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+  <div>
+    <img src="/img/<%-category.image%>"/>
+    
+    <%- category.name %>
+  </div>
+</div>
+</a>
+<% }) %>
+<% } %>
+</div>

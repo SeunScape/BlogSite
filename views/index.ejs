@@ -28,18 +28,22 @@
   </div>
 </div>
 <section>
-  <h1>latest recipes</h1>
-  <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
-    <div><img src="/img/background.jpg"/>New recipe</div>
-    <div><img src="/img/background.jpg"/>New recipe</div>
-    <div><img src="/img/background.jpg"/>New recipe</div>
-    <div><img src="/img/background.jpg"/>New recipe</div>
-    <div><img src="/img/background.jpg"/>New recipe</div>
-    <div><img src="/img/background.jpg"/>New recipe</div>
-    <div><img src="/img/background.jpg"/>New recipe</div>
-    <div><img src="/img/background.jpg"/>New recipe</div>
-    <div><img src="/img/background.jpg"/>New recipe</div>
-  </div>
+  <h1>Categories</h1>
+    <div>
+      <% if(categories != '') { %>
+        <% categories.forEach(function(category, index) {%>
+    <a href="/categories">
+      <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+        <div>
+          <img src="/img/<%-category.image%>"/>
+          
+          <%- category.name %>
+        </div>
+      </div>
+    </a>
+      <% }) %>
+      <% } %>
+    </div>
 </section>
 </body>
 </html>
