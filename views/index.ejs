@@ -44,6 +44,74 @@
       <% }) %>
       <% } %>
     </div>
+
+    <div>
+      <h1> Latest recipes</h1>
+      <% if (food.latest && food.latest.length > 0) { %>
+        <% food.latest.forEach(function (recipe, index) { %>
+          <a href="/recipe/<%= recipe._id %>">
+            <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+              <div>
+                <img src="/uploads/<%- recipe.image %>"/>
+                <%- recipe.name %>
+              </div>
+            </div>
+          </a>
+        <% }) %>
+      <% } %>
+      
+    </div> 
+
+    <div>
+      <h1>Thai</h1>
+      <% if(food != '') { %>
+        <% food.thai.forEach(function(recipe, index) {%>
+    <a href="/recipe/<%= recipe._id %>">
+      <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+        <div>
+          <img src="/uploads/<%-recipe.image%>"/>
+          <%- recipe.name %>
+        </div>
+      </div>
+    </a>
+      <% }) %>
+      <% } %>
+    </div>
+
+    <div>
+      <h1>american</h1>
+      <% if(food != '') { %>
+        <% food.american.forEach(function(recipe, index) {%>
+    <a href="/recipe/ <%= recipe._id %>">
+      <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+        <div>
+          <img src="/uploads/<%-recipe.image%>"/>
+          
+          <%- recipe.name %>
+        </div>
+      </div>
+    </a>
+      <% }) %>
+      <% } %>
+    </div>
+
+    
+    <div>
+      <h1>chinese</h1>
+      <% if(food != '') { %>
+        <% food.chinese.forEach(function(recipe, index) {%>
+    <a href="/recipe/ <%= recipe._id %>">
+      <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+        <div>
+          <img src="/uploads/<%-recipe.image%>"/>
+          
+          <%- recipe.name %>
+        </div>
+      </div>
+    </a>
+      <% }) %>
+      <% } %>
+    </div>
 </section>
 </body>
 </html>
