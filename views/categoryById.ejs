@@ -1,0 +1,55 @@
+<div>
+        <h1>CategorybyId</h1>
+        <% if(items != null) { %>
+          <% items.chinese.forEach(function(recipe, index) {%>
+      <a href="/recipe/ <%= recipe._id %>">
+        <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+          <div>
+            <img src="/uploads/<%-recipe.image%>"/>
+            
+            <%- recipe.name %>
+          </div>
+        </div>
+      </a>
+        <% }) %>
+        <% } else {%>
+            <h1>error</h1>
+            <% } %>
+</div>
+<div>
+    <% if(items != null) { %>
+        <% items.american.forEach(function(recipe, index) {%>
+    <a href="/recipe/ <%= recipe._id %>">
+      <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+        <div>
+          <img src="/uploads/<%-recipe.image%>"/>
+          
+          <%- recipe.name %>
+        </div>
+      </div>
+    </a>
+      <% }) %>
+      <% } else {%>
+          <h1>error</h1>
+          <% } %>
+    
+</div>
+<div>
+    <% if(items != null) { %>
+        <% items.thai.forEach(function(recipe, index) {%>
+    <a href="/recipe/ <%= recipe._id %>">
+      <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+        <div>
+          <img src="/uploads/<%-recipe.image%>"/>
+          
+          <%- recipe.name %>
+        </div>
+      </div>
+    </a>
+      <% }) %>
+      <% } else {%>
+          <h1>error</h1>
+          <% } %>
+    
+</div>
+

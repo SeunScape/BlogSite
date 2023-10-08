@@ -21,3 +21,23 @@
 <% }) %>
 <% } %>
 </div>
+
+<div>
+  <h1>categoryById</h1>
+  <% if (typeof categoryById !== 'undefined' && categoryById.length > 0) { %>
+    <% categories.forEach(function(recipe, index) {%>
+<a href="/recipe/ <%= recipe._id %>">
+  <div class="grid grid-rows-6 grid-flow-col gap-4 mt-10">
+    <div>
+      <img src="/uploads/<%-recipe.image%>"/>
+      
+      <%- recipe.name %>
+    </div>
+  </div>
+</a>
+  <% }) %>
+  <% } else {%>
+      <h1>error</h1>
+      <% } %>
+</div>
+

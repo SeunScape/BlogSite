@@ -30,38 +30,61 @@ export const exploreCategories = async(req, res) => {
     res.status(500).send({message: error.message || "error occured"})
   }
 };
-export const addNewRecipe = async (req, res) => {
-  try {
-    const recipesData = req.body;
+// export const addNewRecipe = async (req, res) => {
+//   try {
+//     const recipesData = req.body;
 
-    const data = await Recipe.insertMany(recipesData);
+//     const data = await Recipe.insertMany(recipesData);
 
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+//     res.status(200).json(data);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 
-export const addNewRecipeData = async (req, res) => {
-  try {
-    const recipesData = req.body;
+// export const addNewRecipeData = async (req, res) => {
+//   try {
+//     const recipesData = req.body;
 
-    const data = await RecipeModel.insertMany(recipesData);
+//     const data = await RecipeModel.insertMany(recipesData);
 
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+//     res.status(200).json(data);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 
-export const exploreRecipes = async(req, res) => {
+export const exploreRecipes = async (req, res) => {
   try {
     let recipeId = req.params.id;
+    const data = await RecipeModel.findById(recipeId);
+    
+    if (!data) {
+      // Handle the case when the recipe is not found
+      return res.status(404).send("Recipe not found");
+    }
 
-    const data = await RecipeModel.findById(recipeId)
-    console.log(data)
-    res.render('recipe.ejs', {title: 'Template blog- recipesprofile', data});
-  }catch(error){
-    res.status(500).send({message: error.message || "error occured"})
+    res.render('recipe.ejs', { title: 'Template blog- recipesprofile', data });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error occurred" });
+  }
+};
+
+export const exploreCategoriesById = async (req, res) => {
+  try {
+    let categoryId = req.params.id;
+    const limitNumber = 20;
+    const categoryById = await Recipe.find({ 'category': categoryId}).limit(limitNumber);
+
+    
+    if (!items) {
+      // Handle the case when the recipe is not found
+      // return res.status(404).send("Recipe not found");
+      console.log('recipe not found')
+    }
+
+    res.render('categories.ejs', { title: 'Template blog- recipesprofile', categoryById});
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error occurred" });
   }
 };
